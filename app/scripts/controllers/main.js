@@ -16,7 +16,6 @@ angular.module('cocktailNinjaApp')
 
     $scope.drinks = [];
     $scope.selectedDrink = null;
-    $scope.ingredients = null;
     $scope.newDrink = null;
 
     $scope.init = function() {
@@ -31,7 +30,6 @@ angular.module('cocktailNinjaApp')
 
     $scope.selectDrink = function(drink) {
       $scope.selectedDrink = drink;
-      $scope.ingredients = drink.$get('ingredients');
     };
 
     $scope.unselectDrink = function() {
