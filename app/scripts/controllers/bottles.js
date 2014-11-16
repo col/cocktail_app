@@ -7,7 +7,7 @@ angular.module('cocktailNinjaApp')
       return { type: "", amount: "", pin: "" };
     }
 
-    $scope.bottles = [];
+    $scope.bottles = undefined;
     $scope.selectedBottle = null;
     $scope.newBottle = null;
 
@@ -41,6 +41,7 @@ angular.module('cocktailNinjaApp')
       if( $scope.selectedBottle ) {
         $scope.selectedBottle.$patch('self', {}, $scope.newBottle).then( function() {
           console.log('success!');
+          $scope.backToList();
         });
       } else {
         $scope.createBottle();

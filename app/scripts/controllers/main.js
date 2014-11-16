@@ -12,9 +12,9 @@ angular.module('cocktailNinjaApp')
 
     function emptyDrink() {
       return { name: "", ingredients: [ { type: "", amount: null } ] };
-    };
+    }
 
-    $scope.drinks = [];
+    $scope.drinks = undefined;
     $scope.selectedDrink = null;
     $scope.newDrink = null;
 
@@ -41,7 +41,19 @@ angular.module('cocktailNinjaApp')
         $scope.drinks = $scope.drinks.filter(function (el) {
             return el !== drink;
         });
+        $scope.selectedDrink = null;
       });
+    };
+
+    $scope.saveDrink = function() {
+      if( $scope.selectedDrink ) {
+        $scope.selectedDrink.$patch('self', {}, $scope.newDrink).then( function() {
+          console.log('success!');
+          $scope.backToList();
+        });
+      } else {
+        $scope.createDrink();
+      }
     };
 
     $scope.createDrink = function() {
@@ -65,6 +77,10 @@ angular.module('cocktailNinjaApp')
     $scope.backToList = function() {
       $scope.selectedDrink = null;
       $scope.newDrink = null;
+    };
+
+    $scope.editDrink = function(drink) {
+      $scope.newDrink = angular.copy(drink);
     };
 
   });
