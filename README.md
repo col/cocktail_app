@@ -15,6 +15,6 @@ grunt serve
 ## Deploy
 
 - Setup [Heroku toolkit](https://toolbelt.heroku.com). 
-- Login with ```heroku login``` (You'll need to be given access to the app on heroku, or you can create your own)
+- Login with ```heroku login``` *(You'll need to be given access to the app on heroku, or you can create your own)*
 - Add the heroku remote ```git remote add heroku git@heroku.com:cocktail-ninja-app.git```
 - Deploy ```git push heroku master```
