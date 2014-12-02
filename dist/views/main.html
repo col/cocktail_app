@@ -1,1 +1,59 @@
-<div class="row marketing" ng-init="init()" ng-if="!selectedDrink && !newDrink"> <h2>Drinks</h2> <ul ng-if="drinks" class="list-unstyled"> <li ng-repeat="drink in drinks" class="drink"> <strong ng-click="selectDrink(drink)">{{drink.name}}</strong> </li> <li ng-if="drinks.length == 0">No drinks</li> </ul> <div ng-if="!drinks">Loading...</div> <button class="btn btn-default btn-sm" ng-click="addDrink()">New Drink</button> </div> <div class="row well" ng-if="selectedDrink && !newDrink"> <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> <h2>{{selectedDrink.name}}</h2> <h4>Ingredients</h4> <ul> <li ng-repeat="ingredient in selectedDrink.ingredients">{{ingredient.amount}}ml of {{ingredient.type}}</li> <li ng-if="drinks.length == 0">No ingredients</li> </ul> <br> <button class="btn btn-default" ng-click="editDrink(drink)">Edit</button> <button class="btn btn-danger" ng-click="deleteDrink(selectedDrink)">Delete</button> </div> <div class="row well" ng-if="newDrink"> <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> <h2>{{ selectedDrink ? 'Edit' : 'New' }} Drink</h2> <input type="text" name="name" placeholder="Name" ng-model="newDrink.name"> <br> <br> <h3>Ingredients</h3> <ul class="list-unstyled"> <li ng-repeat="ingredient in newDrink.ingredients"> <input type="text" name="ingredient-amount" ng-model="ingredient.amount">ml of <input type="text" name="ingredient-type" ng-model="ingredient.type"> <br> </li> </ul> <button class="btn btn-default btn-xs" ng-click="addIngredient()">Add Ingredient</button> <br> <br> <button class="btn btn-primary" ng-click="saveDrink()">{{ selectedDrink ? 'Save' : 'Create' }}</button> <button class="btn btn-default" ng-click="backToList()">Cancel</button> </div>
+<div class="row marketing" ng-init="init()" ng-if="!selectedDrink && !newDrink">
+
+  <h2>Drinks</h2>
+  <ul ng-if="drinks" class="list-unstyled">
+    <li ng-repeat="drink in drinks" class="drink">
+      <strong ng-click="selectDrink(drink)">{{drink.name}}</strong>
+    </li>
+    <li ng-if="drinks.length == 0">No drinks</li>
+  </ul>
+  <div ng-if="!drinks">Loading...</div>
+
+  <button class="btn btn-default btn-sm" ng-click="addDrink()">New Drink</button>
+
+</div>
+
+<div class="row well" ng-if="selectedDrink && !newDrink">
+  <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+  <h2>{{selectedDrink.name}}</h2>
+
+  <h4>Ingredients</h4>
+  <ul>
+    <li ng-repeat="ingredient in selectedDrink.ingredients">{{ingredient.amount}}ml of {{ingredient.type}}</li>
+    <li ng-if="drinks.length == 0">No ingredients</li>
+  </ul>
+  <br>
+
+  <button class="btn btn-default" ng-click="editDrink(drink)">Edit</button>
+  <button class="btn btn-danger" ng-click="deleteDrink(selectedDrink)">Delete</button>
+  <button class="btn btn-success btn-lg" ng-click="makeDrink(selectedDrink)">MAKE ME A MFING DRINK</button>
+</div>
+
+<div class="row well" ng-if="newDrink">
+  <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+  <h2>{{ selectedDrink ? 'Edit' : 'New'  }} Drink</h2>
+
+  <input type="text" name="name" placeholder="Name" ng-model="newDrink.name"/>
+  <br>
+  <br>
+
+  <h3>Ingredients</h3>
+
+  <ul class="list-unstyled">
+    <li ng-repeat="ingredient in newDrink.ingredients">
+      <input type="text" name="ingredient-amount" ng-model="ingredient.amount"/>ml
+      of
+      <input type="text" name="ingredient-type" ng-model="ingredient.type"/>
+      <br>
+    </li>
+  </ul>
+  <button class="btn btn-default btn-xs" ng-click="addIngredient()">Add Ingredient</button>
+  <br>
+  <br>
+
+  <button class="btn btn-primary" ng-click="saveDrink()">{{ selectedDrink ? 'Save' : 'Create'  }}</button>
+  <button class="btn btn-default" ng-click="backToList()">Cancel</button>
+
+</div>

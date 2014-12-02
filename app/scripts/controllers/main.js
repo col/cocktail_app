@@ -8,13 +8,14 @@
  * Controller of the cocktailNinjaApp
  */
 angular.module('cocktailNinjaApp')
-  .controller('MainCtrl', function ($scope, DrinksService) {
+  .controller('MainCtrl', function ($scope, DrinksService, DrunkamatronService) {
 
     function emptyDrink() {
       return { name: "", ingredients: [ { type: "", amount: null } ] };
     }
 
     $scope.drinks = undefined;
+    $scope.bottles = undefined;
     $scope.selectedDrink = null;
     $scope.newDrink = null;
 
@@ -25,6 +26,14 @@ angular.module('cocktailNinjaApp')
         return response.$get('drinks');
       }).then( function(data) {
         $scope.drinks = data;
+      });
+
+      DrinksService.load().then( function( service ) {
+          return service.$get('bottles');
+      }).then( function(response) {
+        return response.$get('bottles');
+      }).then( function(data) {
+        $scope.bottles = data;
       });
     };
 
@@ -82,5 +91,18 @@ angular.module('cocktailNinjaApp')
     $scope.editDrink = function(drink) {
       $scope.newDrink = angular.copy(drink);
     };
+
+    $scope.makeDrink = function(drink) {
+      DrunkamatronService.makeAwesomeDrink(drink, $scope.bottles);
+      //$scope.updateBottleAmount(drink);
+    }
+
+   $scope.isAvailable = function(drink){
+    // function for check amount in bottle. if >0 then is available
+   }
+
+   $scope.updateBottleAmount = function(drink){
+    // function for when makeadrink, reduce amount from bottle
+   }
 
   });

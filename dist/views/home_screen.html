@@ -1,0 +1,20 @@
+<div>
+  <style>
+    
+    
+  </style>
+  <h1>The Happiness Dispenser</h1>
+  <h2>There is a season for everything, including alcohol. It is always the season for alcohol.</h2>
+
+ 
+ <ul ng-if="drinks" class="list-unstyled">
+    <li ng-repeat="drink in drinks" class="drink">
+      <strong ng-click="selectDrink(drink)">{{drink.name}}</strong>
+    </li>
+    <li ng-if="drinks.length == 0">No drinks</li>
+  </ul>
+
+
+
+
+</div>

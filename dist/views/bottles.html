@@ -1,1 +1,46 @@
-<div class="row marketing" ng-init="init()" ng-if="!selectedBottle && !newBottle"> <h2>Bottles</h2> <ul ng-if="bottles" class="list-unstyled"> <li ng-repeat="bottle in bottles" class="bottle"> <strong ng-click="selectBottle(bottle)">{{bottle.type}}</strong> </li> <li ng-if="bottles.length == 0">No bottles</li> </ul> <div ng-if="!bottles">Loading...</div> <button class="btn btn-default btn-sm" ng-click="addBottle()">New Bottle</button> </div> <div class="row well" ng-if="selectedBottle && !newBottle"> <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> <h2>{{selectedBottle.type}}</h2> <b>Amount:</b> {{selectedBottle.amount}}<br> <b>Pin:</b> {{selectedBottle.pin}}<br> <br> <button class="btn btn-default" ng-click="editBottle(selectedBottle)">Edit</button> <button class="btn btn-danger" ng-click="deleteBottle(selectedBottle)">Delete</button> </div> <div class="row well" ng-if="newBottle"> <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> <h2>{{ selectedBottle ? 'Edit' : 'New' }} Bottle</h2> <input type="text" name="type" placeholder="Type" ng-model="newBottle.type"> <br> <input type="text" name="amount" placeholder="Amount" ng-model="newBottle.amount"> <br> <input type="text" name="pin" placeholder="Pin" ng-model="newBottle.pin"> <br> <button class="btn btn-primary" ng-click="saveBottle()">{{ selectedBottle ? 'Save' : 'Create' }} Bottle</button> <button class="btn btn-default" ng-click="backToList()">Cancel</button> </div>
+<div class="row marketing" ng-init="init()" ng-if="!selectedBottle && !newBottle">
+
+  <h2>Bottles</h2>
+
+  <ul ng-if="bottles" class="list-unstyled">
+    <li ng-repeat="bottle in bottles" class="bottle">
+      <strong ng-click="selectBottle(bottle)">{{bottle.type}}</strong>
+    </li>
+    <li ng-if="bottles.length == 0">No bottles</li>
+  </ul>
+  <div ng-if="!bottles">Loading...</div>
+
+  <button class="btn btn-default btn-sm" ng-click="addBottle()">New Bottle</button>
+
+</div>
+
+<div class="row well" ng-if="selectedBottle && !newBottle">
+  <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+  <h2>{{selectedBottle.type}}</h2>
+
+  <b>Amount:</b> {{selectedBottle.amount}}<br>
+  <b>Pin:</b> {{selectedBottle.pin}}<br>
+  <br>
+
+  <button class="btn btn-default" ng-click="editBottle(selectedBottle)">Edit</button>
+  <button class="btn btn-danger" ng-click="deleteBottle(selectedBottle)">Delete</button>
+
+</div>
+
+<div class="row well" ng-if="newBottle">
+  <button type="button" class="close" ng-click="backToList()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+  <h2>{{ selectedBottle ? 'Edit' : 'New' }} Bottle</h2>
+
+  <input type="text" name="type" placeholder="Type" ng-model="newBottle.type"/>
+  <br>
+  <input type="text" name="amount" placeholder="Amount" ng-model="newBottle.amount"/>
+  <br>
+  <input type="text" name="pin" placeholder="Pin" ng-model="newBottle.pin"/>
+  <br>
+
+  <button class="btn btn-primary" ng-click="saveBottle()">{{ selectedBottle ? 'Save' : 'Create' }} Bottle</button>
+  <button class="btn btn-default" ng-click="backToList()">Cancel</button>
+
+</div>

@@ -32,6 +32,10 @@ angular
         templateUrl: 'views/bottles.html',
         controller: 'BottlesCtrl'
       })
+      .when('/home_screen', {
+        templateUrl: 'views/home_screen.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
