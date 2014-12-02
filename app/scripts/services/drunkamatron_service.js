@@ -10,8 +10,8 @@ angular.module('cocktailNinjaApp')
           return bottle.pin + '-' + ingredient.amount;
         }).join('/');
 
-        $http.get('http://192.168.240.1/arduino/make_drink/'+recipe).
-        //$http.get('http://arduino.local/arduino/make_drink/'+recipe).
+        // $http.get('http://192.168.240.1/arduino/make_drink/'+recipe).
+        $http.get('http://10.171.124.73/arduino/make_drink/'+recipe).
 
         success(function() {
           console.log('your drink is served');
